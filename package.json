@@ -1,5 +1,5 @@
 {
-  "name": "books-project2",
+  "name": "Disney-movies-project",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/Gisela-Camacho-H/books-project2.git"
   },
-  "author": "Gisela Camacho",
+  "author": "Gisela Camacho, Ana Rector, Nicholas Balabanov, Emily Castillo",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Gisela-Camacho-H/books-project2/issues"

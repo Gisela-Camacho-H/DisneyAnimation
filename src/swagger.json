@@ -1,25 +1,37 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "My API",
-    "description": "Description",
+    "title": "Disney Movies DB",
+    "description": "This is a database that saves all animated Disney works, its main characters, animation eras and spin offs. ",
     "version": "1.0.0"
   },
-  "host": "books-project2.onrender.com",
+  "host": "localhost:8080",
   "basePath": "/",
+  "tags": [
+    {
+      "name": "Movies",
+      "description": ""
+    },
+    {
+      "name": "Characters",
+      "description": ""
+    },
+    {
+      "name": "Eras",
+      "description": ""
+    },
+    {
+      "name": "Spin Offs",
+      "description": ""
+    }
+  ],
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
-    "/api-docs": {
+    "/movies/": {
       "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
-    "/books/": {
-      "get": {
+        "tags": ["Movies"],
         "description": "",
         "produces": [
           "application/json"
@@ -32,6 +44,7 @@
         }
       },
       "post": {
+        "tags": ["Movies"],
         "description": "",
         "parameters": [
           {
@@ -43,25 +56,25 @@
                 "title": {
                   "example": "any"
                 },
-                "description": {
+                "promoImage": {
                   "example": "any"
                 },
-                "author": {
+                "year": {
                   "example": "any"
                 },
-                "imagePath": {
+                "era": {
                   "example": "any"
                 },
-                "details": {
+                "length": {
                   "example": "any"
                 },
-                "aboutAuthor": {
+                "trailerLink": {
                   "example": "any"
                 },
-                "categories": {
+                "trivia": {
                   "example": "any"
                 },
-                "imageAuthor": {
+                "category": {
                   "example": "any"
                 }
               }
@@ -81,8 +94,9 @@
         }
       }
     },
-    "/books/{id}": {
+    "/movies/{id}": {
       "get": {
+        "tags": ["Movies"],
         "description": "",
         "produces": [
           "application/json"
@@ -105,6 +119,7 @@
         }
       },
       "put": {
+        "tags": ["Movies"],
         "description": "",
         "parameters": [
           {
@@ -122,25 +137,25 @@
                 "title": {
                   "example": "any"
                 },
-                "description": {
+                "promoImage": {
                   "example": "any"
                 },
-                "author": {
+                "year": {
                   "example": "any"
                 },
-                "imagePath": {
+                "era": {
                   "example": "any"
                 },
-                "details": {
+                "length": {
                   "example": "any"
                 },
-                "aboutAuthor": {
+                "trailerLink": {
                   "example": "any"
                 },
-                "categories": {
+                "trivia": {
                   "example": "any"
                 },
-                "imageAuthor": {
+                "category": {
                   "example": "any"
                 }
               }
@@ -163,6 +178,7 @@
         }
       },
       "delete": {
+        "tags": ["Movies"],
         "description": "",
         "parameters": [
           {
@@ -185,8 +201,9 @@
         }
       }
     },
-    "/users/": {
+    "/characters/": {
       "get": {
+        "tags": ["Characters"],
         "description": "",
         "produces": [
           "application/json"
@@ -199,6 +216,7 @@
         }
       },
       "post": {
+        "tags": ["Characters"],
         "description": "",
         "parameters": [
           {
@@ -210,22 +228,13 @@
                 "name": {
                   "example": "any"
                 },
-                "last_name": {
+                "role": {
                   "example": "any"
                 },
-                "nickname": {
+                "description": {
                   "example": "any"
                 },
-                "email": {
-                  "example": "any"
-                },
-                "password": {
-                  "example": "any"
-                },
-                "phone": {
-                  "example": "any"
-                },
-                "birthday": {
+                "trivia": {
                   "example": "any"
                 }
               }
@@ -245,8 +254,9 @@
         }
       }
     },
-    "/users/{id}": {
+    "/characters/{id}": {
       "get": {
+        "tags": ["Characters"],
         "description": "",
         "produces": [
           "application/json"
@@ -269,6 +279,7 @@
         }
       },
       "put": {
+        "tags": ["Characters"],
         "description": "",
         "parameters": [
           {
@@ -286,19 +297,13 @@
                 "name": {
                   "example": "any"
                 },
-                "last_name": {
+                "role": {
                   "example": "any"
                 },
-                "nickname": {
+                "description": {
                   "example": "any"
                 },
-                "password": {
-                  "example": "any"
-                },
-                "phone": {
-                  "example": "any"
-                },
-                "birthday": {
+                "trivia": {
                   "example": "any"
                 }
               }
@@ -321,6 +326,7 @@
         }
       },
       "delete": {
+        "tags": ["Characters"],
         "description": "",
         "parameters": [
           {
