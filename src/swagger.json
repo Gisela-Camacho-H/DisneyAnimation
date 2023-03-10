@@ -26,7 +26,7 @@
     }
   ],
   "schemes": [
-    "http"
+    "http", "https"
   ],
   "paths": {
     "/movies/": {
@@ -345,6 +345,36 @@
           },
           "500": {
             "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/eras": {
+      "get": {
+        "tags": ["Eras"],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/spinoffs": {
+      "get": {
+        "tags": ["Spin Offs"],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
