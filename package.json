@@ -1,5 +1,5 @@
 {
-  "name": "Disney-movies-project",
+  "name": "book-project2",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Gisela-Camacho-H/books-project2.git"
+    "url": "git+https://github.com/Gisela-Camacho-H/DisneyAnimation.git"
   },
   "author": "Gisela Camacho, Ana Rector, Nicholas Balabanov, Emily Castillo",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Gisela-Camacho-H/books-project2/issues"
+    "url": "https://github.com/Gisela-Camacho-H/DisneyAnimation/issues"
   },
-  "homepage": "https://github.com/Gisela-Camacho-H/books-project2#readme",
+  "homepage": "https://github.com/Gisela-Camacho-H/DisneyAnimation#readme",
   "dependencies": {
     "body-parser": "^1.20.1",
     "dotenv": "^16.0.3",
