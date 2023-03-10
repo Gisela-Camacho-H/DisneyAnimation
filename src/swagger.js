@@ -9,16 +9,16 @@ const doc = {
   // schemes: ['http'],
   host: 'disney-movie-db.onrender.com',
   schemes: ['https'],
-  securityDefinitions: {
-    oAuthSample: {
-      type: 'oauth2',
-      authorizationUrl: 'https://disney-movie-db.onrender.com/api-docs',
-      flow: 'implicit',
-      scopes: {
-        write_books: ''
-      }
-    }
-  }
+  // securityDefinitions: {
+  //   oAuthSample: {
+  //     type: 'oauth2',
+  //     authorizationUrl: 'https://disney-movie-db.onrender.com/api-docs',
+  //     flow: 'implicit',
+  //     scopes: {
+  //       write_books: ''
+  //     }
+  //   }
+  // }
 };
 
 const outputFile = './swagger.json';
