@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Disney Movies DB",
-    "description": "This is a database that saves all animated Disney works, its main characters, animation eras and spin offs. ",
+    "description": "This is a database that saves all animated Disney works, its main characters, animation eras, and spin offs.",
     "version": "1.0.0"
   },
   "host": "localhost:8080",
