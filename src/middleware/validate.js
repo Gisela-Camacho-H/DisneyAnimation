@@ -45,7 +45,29 @@ const saveMovie = (req, res, next) => {
     });
   };
 
+  const saveEra = (req, res, next) => {
+    const validationRule = {
+      name: 'required|string',
+      start_year: 'required|string',
+      end_year: 'required|string',
+      description: 'required|string',
+      moviesInEra: 'required|string'
+    };
+    validator(req.body, validationRule, {}, (err, status) => {
+      if (!status) {
+        res.status(412).send({
+          success: false,
+          message: "Validation failed",
+          data: err
+        });
+      } else {
+        next();
+      }
+    });
+  };
+
 module.exports = {
   saveMovie,
-  saveCharacter
+  saveCharacter,
+  saveEra
 };
