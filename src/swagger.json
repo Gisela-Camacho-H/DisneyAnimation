@@ -349,7 +349,7 @@
         }
       }
     },
-    "/eras": {
+    "/eras/": {
       "get": {
         "tags": ["Eras"],
         "description": "",
@@ -497,7 +497,7 @@
         }
       }
     },
-    "/spinoffs": {
+    "/spinoffs/": {
       "get": {
         "tags": ["Spin Offs"],
         "description": "",
