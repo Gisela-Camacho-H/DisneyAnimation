@@ -5,7 +5,7 @@
     "description": "This is a database that saves all animated Disney works, its main characters, animation eras, and spin offs.",
     "version": "1.0.0"
   },
-  "host": "disney-movie-db.onrender.com",
+  "host": "disney-movies-db.onrender.com",
   "basePath": "/",
   "tags": [
     {

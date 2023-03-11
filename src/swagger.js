@@ -7,7 +7,7 @@ const doc = {
   },
   // host: 'localhost:8080',
   // schemes: ['http'],
-  host: 'disney-movie-db.onrender.com',
+  host: 'disney-movies-db.onrender.com',
   schemes: ['https'],
   // securityDefinitions: {
   //   oAuthSample: {
