@@ -31,7 +31,7 @@ const getSingleSpinoff = async (req, res, next) => {
         related: req.body.related,
         type: req.body.type
       };
-      const response = await mongodb.getDb().db().collection('spinoffs').inractersertOne(spinoff);
+      const response = await mongodb.getDb().db().collection('spinoffs').insertOne(spinoff);
       if (response.acknowledged) {
         res.status(201).json(response);
       } else {
