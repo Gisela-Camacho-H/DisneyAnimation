@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const app = express();
 
 const charactersController = require('../controllers/characters');
 const validation = require('../middleware/validate');
@@ -14,4 +15,15 @@ router.put('/:id', validation.saveCharacter, charactersController.updateCharacte
 
 router.delete('/:id', charactersController.deleteCharacters);
 
-module.exports = router;
+
+// Test Method GET ALL
+
+// Test Method GET BY ID
+
+// Test Method POST
+
+// Test Method PUT
+
+// Test Method DELETE
+
+module.exports = router, app;

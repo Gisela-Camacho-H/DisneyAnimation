@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const app = express();
 
 const erasController = require('../controllers/eras');
 const validation = require('../middleware/validate');
@@ -14,4 +15,16 @@ router.put('/:id', validation.saveEra , erasController.updateEras);
 
 router.delete('/:id', erasController.deleteEras);
 
-module.exports = router;
+
+// Test Method GET ALL
+
+// Test Method GET BY ID
+
+// Test Method POST
+
+// Test Method PUT
+
+// Test Method DELETE
+
+
+module.exports = router, app;
