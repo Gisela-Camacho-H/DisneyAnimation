@@ -448,13 +448,16 @@
                 "name": {
                   "example": "any"
                 },
-                "role": {
+                "start_year": {
+                  "example": "any"
+                },
+                "end_year": {
                   "example": "any"
                 },
                 "description": {
                   "example": "any"
                 },
-                "trivia": {
+                "moviesInEra": {
                   "example": "any"
                 }
               }
