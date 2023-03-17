@@ -2,9 +2,16 @@ const express = require('express');
 const router = express.Router();
 
 const spinoffController = require('../controllers/spinoff');
+const validation = require('../middleware/validate');
 
-router.get('/', spinoffController.getAll);
+router.get('/', spinoffController .getAllSpinoff);
 
-// Add other routes here
+router.get('/:id', spinoffController .getSingleSpinoff);
+
+router.post('/', validation.saveSpinoff, spinoffController .createSpinoffs);
+
+router.put('/:id', validation.saveSpinoff, spinoffController .updateSpinoffs);
+
+router.delete('/:id', spinoffController .deleteSpinoffs);
 
 module.exports = router;

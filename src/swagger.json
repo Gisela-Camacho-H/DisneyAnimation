@@ -376,13 +376,16 @@
                 "name": {
                   "example": "any"
                 },
-                "role": {
+                "start_year": {
+                  "example": "any"
+                },
+                "end_year": {
                   "example": "any"
                 },
                 "description": {
                   "example": "any"
                 },
-                "trivia": {
+                "moviesInEra": {
                   "example": "any"
                 }
               }
@@ -521,16 +524,13 @@
             "schema": {
               "type": "object",
               "properties": {
-                "name": {
+                "title": {
                   "example": "any"
                 },
-                "role": {
+                "related": {
                   "example": "any"
                 },
-                "description": {
-                  "example": "any"
-                },
-                "trivia": {
+                "type": {
                   "example": "any"
                 }
               }
@@ -590,16 +590,13 @@
             "schema": {
               "type": "object",
               "properties": {
-                "name": {
+                "title": {
                   "example": "any"
                 },
-                "role": {
+                "related": {
                   "example": "any"
                 },
-                "description": {
-                  "example": "any"
-                },
-                "trivia": {
+                "type": {
                   "example": "any"
                 }
               }

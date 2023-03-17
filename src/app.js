@@ -13,7 +13,6 @@ require('dotenv').config();
 //     secret: process.env.SECRET
 //   };
 
-
 const port = process.env.PORT || 8080;
 const app = express();
 
