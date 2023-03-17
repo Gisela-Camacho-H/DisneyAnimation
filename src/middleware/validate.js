@@ -48,8 +48,8 @@ const saveMovie = (req, res, next) => {
   const saveEra = (req, res, next) => {
     const validationRule = {
       name: 'required|string',
-      start_year: 'required|string',
-      end_year: 'required|string',
+      start_year: 'required|integer',
+      end_year: 'required|integer',
       description: 'required|string',
       moviesInEra: 'required|string'
     };
