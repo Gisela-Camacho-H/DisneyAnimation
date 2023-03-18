@@ -13,4 +13,6 @@ Para ejecutar el servidor local
 <pre><code>npm start</code></pre>
 
 This test whith jest
+Edit my file package.json because no eject my project
 <pre><code>"test": "node --experimental-vm-modules node_modules/.bin/jest --coverage",</pre></code>
+<pre><code>"test": "jest",</pre></code>
