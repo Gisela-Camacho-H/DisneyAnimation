@@ -10,7 +10,8 @@ const config = {
      baseURL: process.env.BASE_URL,
      clientID: process.env.CLIENT_ID,
      issuerBaseURL: process.env.ISSUER_BASE_URL,
-     secret: process.env.SECRET
+     secret: process.env.SECRET,
+     idpLogout: true,
    };
 
 const port = process.env.PORT || 8080;
@@ -32,9 +33,10 @@ app
  app.get('/', (req, res) => {
      res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
    });
- app.get('/profile', requiresAuth(), (req , res) => {
-   res.send(JSON.stringify(res.oidc.user));
- });
+   
+   app.get('/profile', requiresAuth(), (req, res) => {
+    res.send(JSON.stringify(req.oidc.user));
+  });
 
 
   process.on('uncaughtException', (err, origin) => {

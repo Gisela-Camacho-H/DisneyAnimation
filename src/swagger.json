@@ -1,37 +1,25 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Disney Movies DB",
-    "description": "This is a database that saves all animated Disney works, its main characters, animation eras, and spin offs.",
+    "title": "My API",
+    "description": "Description",
     "version": "1.0.0"
   },
-  "host": "disney-movies-db.onrender.com",
+  "host": "localhost:8080",
   "basePath": "/",
-  "tags": [
-    {
-      "name": "Movies",
-      "description": ""
-    },
-    {
-      "name": "Characters",
-      "description": ""
-    },
-    {
-      "name": "Eras",
-      "description": ""
-    },
-    {
-      "name": "Spin Offs",
-      "description": ""
-    }
-  ],
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
     "/movies/": {
       "get": {
-        "tags": ["Movies"],
         "description": "",
         "produces": [
           "application/json"
@@ -44,7 +32,6 @@
         }
       },
       "post": {
-        "tags": ["Movies"],
         "description": "",
         "parameters": [
           {
@@ -96,7 +83,6 @@
     },
     "/movies/{id}": {
       "get": {
-        "tags": ["Movies"],
         "description": "",
         "produces": [
           "application/json"
@@ -119,7 +105,6 @@
         }
       },
       "put": {
-        "tags": ["Movies"],
         "description": "",
         "parameters": [
           {
@@ -178,7 +163,6 @@
         }
       },
       "delete": {
-        "tags": ["Movies"],
         "description": "",
         "parameters": [
           {
@@ -201,9 +185,56 @@
         }
       }
     },
+    "/movies/movies": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "any"
+                },
+                "promoImage": {
+                  "example": "any"
+                },
+                "era": {
+                  "example": "any"
+                },
+                "length": {
+                  "example": "any"
+                },
+                "trailerLink": {
+                  "example": "any"
+                },
+                "trivia": {
+                  "example": "any"
+                },
+                "category": {
+                  "example": "any"
+                },
+                "year": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/characters/": {
       "get": {
-        "tags": ["Characters"],
         "description": "",
         "produces": [
           "application/json"
@@ -216,7 +247,6 @@
         }
       },
       "post": {
-        "tags": ["Characters"],
         "description": "",
         "parameters": [
           {
@@ -256,7 +286,6 @@
     },
     "/characters/{id}": {
       "get": {
-        "tags": ["Characters"],
         "description": "",
         "produces": [
           "application/json"
@@ -279,7 +308,6 @@
         }
       },
       "put": {
-        "tags": ["Characters"],
         "description": "",
         "parameters": [
           {
@@ -326,7 +354,6 @@
         }
       },
       "delete": {
-        "tags": ["Characters"],
         "description": "",
         "parameters": [
           {
@@ -351,7 +378,6 @@
     },
     "/eras/": {
       "get": {
-        "tags": ["Eras"],
         "description": "",
         "produces": [
           "application/json"
@@ -364,7 +390,6 @@
         }
       },
       "post": {
-        "tags": ["Eras"],
         "description": "",
         "parameters": [
           {
@@ -407,7 +432,6 @@
     },
     "/eras/{id}": {
       "get": {
-        "tags": ["Eras"],
         "description": "",
         "produces": [
           "application/json"
@@ -430,7 +454,6 @@
         }
       },
       "put": {
-        "tags": ["Eras"],
         "description": "",
         "parameters": [
           {
@@ -480,7 +503,6 @@
         }
       },
       "delete": {
-        "tags": ["Eras"],
         "description": "",
         "parameters": [
           {
@@ -505,7 +527,6 @@
     },
     "/spinoffs/": {
       "get": {
-        "tags": ["Spin Offs"],
         "description": "",
         "produces": [
           "application/json"
@@ -518,7 +539,6 @@
         }
       },
       "post": {
-        "tags": ["Spin Offs"],
         "description": "",
         "parameters": [
           {
@@ -555,7 +575,6 @@
     },
     "/spinoffs/{id}": {
       "get": {
-        "tags": ["Spin Offs"],
         "description": "",
         "produces": [
           "application/json"
@@ -578,7 +597,6 @@
         }
       },
       "put": {
-        "tags": ["Spin Offs"],
         "description": "",
         "parameters": [
           {
@@ -622,7 +640,6 @@
         }
       },
       "delete": {
-        "tags": ["Spin Offs"],
         "description": "",
         "parameters": [
           {

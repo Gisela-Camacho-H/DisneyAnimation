@@ -1,4 +1,5 @@
 const swaggerAutogen = require('swagger-autogen')();
+require('dotenv').config();
 
 const doc = {
   info: {
@@ -7,8 +8,8 @@ const doc = {
   },
   // host: 'localhost:8080',
   // schemes: ['http'],
-  host: 'disney-movies-db.onrender.com',
-  schemes: ['https'],
+  host: process.env.HOST,
+  schemes: [process.env.SCHEME],
   // securityDefinitions: {
   //   oAuthSample: {
   //     type: 'oauth2',
@@ -21,8 +22,8 @@ const doc = {
   // }
 };
 
-const outputFile = './swagger.json';
-const endpointsFiles = ['./routes/index.js'];
+const outputFile = './src/swagger.json';
+const endpointsFiles = ['./src/routes/index.js'];
 
 swaggerAutogen(outputFile, endpointsFiles, doc);
 // Run server after it gets generated
