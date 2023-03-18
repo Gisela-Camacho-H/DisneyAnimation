@@ -26,7 +26,12 @@ const getDb = () => {
   return _db;
 };
 
+const getCollection = (name) => {
+ return mongodb.getDb().db().collection(name)
+}
+
 module.exports = {
+  getCollection,
   initDb,
   getDb,
 };
