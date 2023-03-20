@@ -28,7 +28,7 @@ app
     next();
   })
   .use('/', require('./routes'));
- app.use(auth(config));
+ //app.use(auth(config));
 
  app.get('/', (req, res) => {
      res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
