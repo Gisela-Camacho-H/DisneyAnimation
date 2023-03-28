@@ -19,7 +19,7 @@ const app = express();
 
 app
   .use(bodyParser.json())
-  app.use((req, res, next) => {
+  .use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader(
       'Access-Control-Allow-Methods',
@@ -28,14 +28,15 @@ app
     next();
   })
   .use('/', require('./routes'));
- //app.use(auth(config));
+  
+ app.use(auth(config));
 
  app.get('/', (req, res) => {
-     res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+     res.send(!!req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
    });
    
    app.get('/profile', requiresAuth(), (req, res) => {
-    res.send(JSON.stringify(req.oidc.user));
+    res.json(req.oidc.user);
   });
 
 
@@ -43,7 +44,7 @@ app
     console.log(process.stderr.fd, `Caught exception: ${err}\n` + `Exception origin: ${origin}`);
   });
 
-mongodb.initDb((err, mongodb) => {
+mongodb.initDb((err) => {
   if (err) {
     console.log(err);
   } else {

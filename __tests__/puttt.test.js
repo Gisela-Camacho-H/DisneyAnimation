@@ -1,71 +1,43 @@
-const {MongoClient} = require('mongodb');
-const request = require('supertest');
-const app = require('../src/routes/index');
+//const {initDb, getDb} = require("../src/db/connect");
+const { MongoClient } = require('mongodb');
+const dotenv = require('dotenv');
+dotenv.config();
 
-describe('insert', () => {
-  let connection;
-  let db;
+//https://youtu.be/xJzeYvelDqo?list=PLs4YDKCLLrp-44HNv4j-Efw6WZITMzxo1&t=1386
 
-  beforeAll(async () => {
-    connection = await MongoClient.connect(globalThis.__MONGO_URI__, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    db = await connection.db(globalThis.__MONGO_DB_NAME__);
-  });
+describe("llamada a conectarse a la base de datos", ()=>{
+    let connection;
+    let db;
 
-  beforeEach(async () => {
-    const movies = db.collection('movies');
-    const movie = {
-      title: 'Old Movie Title',
-      promoImage: 'Old Movie Image',
-      year: '2021',
-      era: 'Contemporary',
-      length: '120',
-      trailerLink: 'Old Movie Trailer',
-      trivia: 'Old Movie Trivia',
-      category: 'Old Movie Category',
-    };
-    const result = await movies.insertOne(movie);
-    movieId = result.insertedId.toString();
+    beforeAll(async () => {
 
-    res = {
-        status: jest.fn().mockReturnThis(),
-        send: jest.fn(),
-        json: jest.fn(),
-      };
-  });
-
-  afterAll(async () => {
-    await connection.close();
-  });
-
-  it('should insert a doc into collection', async () => {
-    const movies = db.collection('movies');
-
-    const mockUser = {_id: 'some-user-id', name: 'John'};
-    await movies.insertOne(mockUser);
-
-    const insertedUser = await movies.findOne({_id: 'some-user-id'});
-    expect(insertedUser).toEqual(mockUser);
-  });
-
-  it("probando", async () => {
-    const res = await request(app)
-    .put(`/movies/${movieId}`)
-    .send({
-        title: 'New Movie Title',
-        promoImage: 'New Movie Image',
-        year: '2023',
-        era: 'Modern',
-        length: '120',
-        trailerLink: 'New Movie Trailer',
-        trivia: 'New Movie Trivia',
-        category: 'New Movie Category',
+        connection = await MongoClient.connect(process.env.MONGODB_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        db = await connection.db('movies')
     });
 
-    expect(res.statusCode).toEqual(200);
-    expect(res.body).toHaveProperty('post');
-    expect(res.body.post).toHaveProperty('title', 'updated title');
+    afterAll(async() => {
+        await connection.close()
     });
-});
+
+    it('should insert a doc into collection', async () => {
+        const movies = db.collection('movies');
+        const mockUser = {
+            id: 'some-user-id',
+            title: 'Old Movie Title',
+            promoImage: 'Old Movie Image',
+            year: '2021',
+            era: 'Contemporary',
+            length: '120',
+            trailerLink: 'Old Movie Trailer',
+            trivia: 'Old Movie Trivia',
+            category: 'Old Movie Category',
+        };
+        await movies.insertOne(mockUser);
+        const insertedUser = await movies.findOne({ id: 'some-user-id' });
+        expect(insertedUser).toEqual(mockUser);
+    });
+}
+);
