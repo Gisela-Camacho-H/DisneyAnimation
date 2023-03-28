@@ -1,6 +1,5 @@
 const {getCollection} = require("../../src/db/connect");
 const characterRepo = require("../../src/repositories/characters");
-const {request} = require("express");
 
 jest.mock('../../src/db/connect')
 const mGetCollection = jest.mocked(getCollection);
@@ -56,4 +55,62 @@ describe('GetAllCharacters', () => {
         expect(actual).toContainObject({name: "Snow White"})
 
     })
+})
+describe('DeleteTest', () => {
+    afterAll(() => {
+        jest.resetAllMocks()
+    })
+    it("This test is deleting the documents from collection", async () => {
+        const deleteItem = {
+            remove: jest.fn().mockResolvedValueOnce({deletedCount: 1}
+            )
+        }
+        mGetCollection.mockReturnValueOnce(deleteItem)
+        let actual = await characterRepo
+            .deleteCharacters(1)
+            .then(response => response);
+        expect(actual).toBeTruthy()
+
+
+    })
+
+})
+
+describe('CreateTest', () => {
+    afterAll(() => {
+        jest.resetAllMocks()
+    })
+    it("This test is deleting the documents from collection", async () => {
+        const deleteItem = {
+            remove: jest.fn().mockResolvedValueOnce({deletedCount: 1}
+            )
+        }
+        mGetCollection.mockReturnValueOnce(deleteItem)
+        let actual = await characterRepo
+            .deleteCharacters(1)
+            .then(response => response);
+        expect(actual).toBeTruthy()
+
+
+    })
+
+})
+describe('UpdateTest', () => {
+    afterAll(() => {
+        jest.resetAllMocks()
+    })
+    it("This  is Update document test in collection", async () => {
+        const deleteItem = {
+            remove: jest.fn().mockResolvedValueOnce({deletedCount: 1}
+            )
+        }
+        mGetCollection.mockReturnValueOnce(deleteItem)
+        let actual = await characterRepo
+            .deleteCharacters(1)
+            .then(response => response);
+        expect(actual).toBeTruthy()
+
+
+    })
+
 })
