@@ -16,27 +16,26 @@ const getSingle = async (req) => {
     return result
 };
 
-const createCharacters = async (character) => {
+const createOneCharacter = async (character) => {
     let response = await getCollection().insertOne(character);
     return response.acknowledged
 };
 
-const updateCharacters = async (updateOption) => {
+const updateOneCharacter = async (updateOption) => {
     let response = await getCollection().replaceOne(updateOption.id, updateOption.character);
     return response
 };
 
-const deleteCharacters = async (characterId) => {
+const deleteCharacter = async (characterId) => {
 
     const response = await getCollection().remove({'_id': characterId}, true);
     return response.deletedCount > 0
 };
 
 module.exports = {
-    getCollection,
     getAllCharactersFromDB,
     getSingle,
-    createCharacters,
-    updateCharacters,
-    deleteCharacters
+    createOneCharacter,
+    updateOneCharacter,
+    deleteCharacter
 };

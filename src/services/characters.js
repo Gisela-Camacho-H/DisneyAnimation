@@ -1,5 +1,5 @@
 const mongodb = require('../db/connect');
-const {getAllCharactersFromDB} = require("../repositories/characters");
+const {getAllCharactersFromDB, getSingle, createOneCharacter, updateOneCharacter, deleteCharacter} = require("../repositories/characters");
 const ObjectId = require('mongodb').ObjectId;
 
 
@@ -11,30 +11,25 @@ const getAllCharacters = async (req, res) => {
         });
 };
 
-const getSingleCharacter = async (req, res, next) => {
+const getSingleCharacter = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
         res.status(400).json('Must use a valid characters id');
     }
     const characterId = new ObjectId(req.params.id);
-    const result = await mongodb
-        .getDb()
-        .db()
-        .collection('characters')
-        .find({ _id: characterId });
-    result.toArray().then((lists) => {
+    getSingle(characterId).then(single => {
         res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(lists[0]);
+        res.status(200).json(single);
     });
 };
 
-const createCharacters = async (req, res) => {
+const createCharacter = async (req, res) => {
     const character = {
         name: req.body.name,
         role: req.body.role,
         description: req.body.description,
         trivia: req.body.trivia
     };
-    const response = await mongodb.getDb().db().collection('characters').insertOne(character);
+    let response = await createOneCharacter(character);
     if (response.acknowledged) {
         res.status(201).json(response);
     } else {
@@ -42,7 +37,7 @@ const createCharacters = async (req, res) => {
     }
 };
 
-const updateCharacters = async (req, res) => {
+const updateCharacter = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
         res.status(400).json('Must use a valid user id to update a characters');
     }
@@ -53,12 +48,8 @@ const updateCharacters = async (req, res) => {
         description: req.body.description,
         trivia: req.body.trivia
     };
-    const response = await mongodb
-        .getDb()
-        .db()
-        .collection('characters')
-        .replaceOne({ _id: characterId }, character);
-    console.log(response);
+    const response = await updateOneCharacter({"id": characterId, "character": character});
+
     if (response.modifiedCount > 0) {
         res.status(204).send();
     } else {
@@ -66,13 +57,12 @@ const updateCharacters = async (req, res) => {
     }
 };
 
-const deleteCharacters = async (req, res) => {
+const deleteCharacter = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
         res.status(400).json('Must use a valid character id to delete a character');
     }
     const characterId = new ObjectId(req.params.id);
-    const response = await mongodb.getDb().db().collection('characters').remove({ _id: characterId }, true);
-    console.log(response);
+    const response = deleteCharacter(characterId);
     if (response.deletedCount > 0) {
         res.status(204).send();
     } else {
@@ -82,8 +72,8 @@ const deleteCharacters = async (req, res) => {
 
 module.exports = {
     getAllCharacters,
-    getSingle,
-    createCharacters,
-    updateCharacters,
-    deleteCharacters
+    getSingleCharacter,
+    createCharacter,
+    updateCharacter,
+    deleteCharacter
 };
