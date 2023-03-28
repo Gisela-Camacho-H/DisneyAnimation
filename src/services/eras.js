@@ -1,14 +1,13 @@
 const mongodb = require('../db/connect');
-const {getAllEras} = require("../services/eras");
+const {getAllErasFromDB} = require("../repositories/eras");
 const ObjectId = require('mongodb').ObjectId;
 
-const getAll = async (req, res, next) => {
-  getAllEras(req,res);
-    // const result = await mongodb.getDb().db().collection('eras').find();
-    // result.toArray().then((lists) => {
-    // res.setHeader('Content-Type', 'application/json');
-    // res.status(200).json(lists);
-    //});
+const getAllEras = async (req, res) => {
+  return getAllErasFromDB().then(
+    (lists) => {
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json(lists);
+    });
 };
 
 const getSingleEra = async (req, res) => {
@@ -83,7 +82,7 @@ const getSingleEra = async (req, res) => {
     };
 
 module.exports = {
-    getAll,
+    getAllEras,
     getSingleEra,
     createEras,
     updateEras,
