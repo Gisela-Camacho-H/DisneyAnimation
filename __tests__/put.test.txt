@@ -29,12 +29,5 @@ describe('updateMovies function', () => {
     expect(insertedUser).toEqual(mockUser);
   });
 
-
-
-    test("examinando mi put (link)", () => {
-        // actual test
-       
-        //fin del test
-      });
   });
 

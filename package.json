@@ -4,9 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "jest",
-    "devStart": "nodemon ./src/app.js",
-    "start": "node ./src/app.js",
+    "test": "jest --detectOpenHandles",
+    "devStart": "nodemon ./src/server.js",
+    "start": "node ./src/server.js",
     "swagger": "node ./src/swagger.js"
   },
   "repository": {

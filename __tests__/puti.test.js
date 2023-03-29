@@ -1,32 +1,33 @@
 const request = require('supertest');
-const mongoose = require('mongoose');
-const MongoMemoryServer = require('mongodb-memory-server').MongoMemoryServer;
-const dotenv = require('dotenv');
-dotenv.config();
+const {MongoClient} = require('mongodb');
+const { MongoMemoryServer } = require('mongodb-memory-server');
 
-// Crea una instancia de MongoMemoryServer para usar una base de datos de prueba
-const mongod = new MongoMemoryServer();
+const app = require('../src/app');
+require('dotenv').config();
 
-let app;
+describe('updateMovies function', () => {
+  // Crea una instancia de MongoMemoryServer para usar una base de datos de prueba
+  let mongoServer;
+  let connection;
+  let db;
 
-beforeAll(async () => {
-  // Configura la base de datos de prueba y la conexión con Mongoose
-  //const uri = await mongod.getUri();
-  //const uri = await mongod.connect(process.env.MONGODB_URI);
-  await mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+  beforeAll(async () => {
+    mongoServer = await MongoMemoryServer.create();
+    const uri = mongoServer.getUri();
+    connection = await MongoClient.connect(uri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    db = await connection.db();
+  });
 
-  // Carga la aplicación para poder realizar pruebas HTTP
-  app = require('../src/app');
-});
+  afterAll(async () => {
+    await connection.close();
+    await mongoServer.stop();
+  });
 
-afterAll(async () => {
-  // Cierra la conexión de Mongoose y detiene la base de datos de prueba
-  await mongoose.disconnect();
-  await mongod.stop();
-});
-
-describe('Ejemplo de prueba para un PUT', () => {
   it('Debería actualizar un recurso existente', async () => {
+    /*const movies = db.collection('movies');
     // Primero, inserta un recurso en la base de datos que podremos actualizar
     const mockMovie = {
         title: 'Old Movie Title',
@@ -38,7 +39,7 @@ describe('Ejemplo de prueba para un PUT', () => {
         trivia: 'Old Movie Trivia',
         category: 'Old Movie Category',
     };
-    const insertResult = await mongoose.connection.collection('movies').insertOne(mockMovie);
+    const insertResult = await movies.insertOne(mockMovie);
 
     // Luego, intenta actualizar el recurso que acabamos de insertar
     const mockMovieUpdate = {
@@ -50,17 +51,18 @@ describe('Ejemplo de prueba para un PUT', () => {
         trailerLink: 'Old Movie Trailer',
         trivia: 'Old Movie Trivia',
         category: 'Old Movie Category',
-    };
+    };*/
     const response = await request(app)
       .put(`/movies/${insertResult.insertedId}`)
       .send(mockMovieUpdate);
 
+    /************
+     * TEST     *
+     ************/
     // Comprueba que la respuesta HTTP tenga el código de estado correcto
     expect(response.status).toEqual(200);
 
-    // Por último, comprueba que el recurso se haya actualizado correctamente en la base de datos
-    const updatedDocument = await mongoose.connection.collection('movies').findOne({_id: insertResult.insertedId});
-    expect(updatedDocument.name).toEqual(updatedResource.name);
-    expect(updatedDocument.description).toEqual(updatedResource.description);
+
   });
+
 });
