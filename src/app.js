@@ -29,7 +29,7 @@ app
   })
   .use('/', require('./routes'));
   
- app.use(auth(config));
+ //app.use(auth(config));
 
  app.get('/', (req, res) => {
      res.send(!!req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
@@ -52,3 +52,6 @@ mongodb.initDb((err) => {
     console.log(`Connected to DB and listening on ${port}`);
   }
 });
+
+module.exports = app;
+
