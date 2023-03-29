@@ -82,7 +82,7 @@ const deleteCharacters = async (req, res) => {
 
 module.exports = {
     getAllCharacters,
-    getSingle,
+    getSingleCharacter,
     createCharacters,
     updateCharacters,
     deleteCharacters

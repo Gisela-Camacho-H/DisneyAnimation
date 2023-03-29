@@ -1,12 +1,21 @@
 const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
+function getCollection() {
+  return mongodb.getCollection('spinoffs')
+}
+
 const getAllSpinoff = async (req, res, next) => {
     const result = await mongodb.getDb().db().collection('spinoffs').find();
     result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists);
     });
+};
+
+const getAllSpinoffsFromDB = async () => {
+  let result = await getCollection().find();
+  return result
 };
 
 const getSingleSpinoff = async (req, res, next) => {
@@ -79,7 +88,9 @@ const getSingleSpinoff = async (req, res, next) => {
 module.exports = {
     getAllSpinoff,
     getSingleSpinoff,
+    getAllSpinoffsFromDB,
     createSpinoffs,
     updateSpinoffs,
-    deleteSpinoffs
+    deleteSpinoffs,
+    getCollection
 }

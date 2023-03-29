@@ -3,12 +3,12 @@ const {getAllEras} = require("../services/eras");
 const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res, next) => {
-  getAllEras(req,res);
-    // const result = await mongodb.getDb().db().collection('eras').find();
-    // result.toArray().then((lists) => {
-    // res.setHeader('Content-Type', 'application/json');
-    // res.status(200).json(lists);
-    //});
+  //getAllEras(req,res);
+     const result = await mongodb.getDb().db().collection('eras').find();
+     result.toArray().then((lists) => {
+     res.setHeader('Content-Type', 'application/json');
+     res.status(200).json(lists);
+    });
 };
 
 const getSingleEra = async (req, res) => {

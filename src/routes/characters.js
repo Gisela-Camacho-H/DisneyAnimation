@@ -15,15 +15,4 @@ router.put('/:id', validation.saveCharacter, charactersController.updateCharacte
 
 router.delete('/:id', charactersController.deleteCharacters);
 
-
-// Test Method GET ALL
-
-// Test Method GET BY ID
-
-// Test Method POST
-
-// Test Method PUT
-
-// Test Method DELETE
-
 module.exports = router, app;

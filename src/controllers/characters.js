@@ -3,7 +3,11 @@ const {getAllCharacters} = require("../services/characters");
 const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res, next) => {
-  getAllCharacters(req,res);
+  const result = await mongodb.getDb().db().collection('characters').find();
+  result.toArray().then((lists) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.status(200).json(lists);
+ });
 };
 
 const getSingle = async (req, res, next) => {
